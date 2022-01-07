@@ -3,13 +3,12 @@ let computerScore = 0
 let playerScore = 0
 const computerOptions = ['rock', 'paper', 'scissor'];
 
-function playRound(){ 
-    computerPick()
-    playerChoiceOrg()
-    theBattle()
+///function playRound(){ 
+///    computerPick()
+///    playerChoiceOrg()
+///    theBattle()
 
 //computer's options, random number selector, and stored choice for comparison 
-const computerOptions = ['rock', 'paper', 'scissor'];
 let computerChoice = computerPick();
 function computerNumber() {
     result = Math.floor(Math.random()*3)
@@ -62,5 +61,4 @@ function theBattle() {
             return console.log('Player Won, Paper beats Rock!');
         }
     }
-}
 }
