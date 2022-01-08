@@ -17,27 +17,21 @@ function computerPick() {
 let playerChoiceOrg = window.prompt("Chose your weapon: Rock, Paper, Scissors");
 let playerChoice = playerChoiceOrg.toLowerCase();
 
-if (playerChoice === computerChoice) {
-    console.log('Tie!')
-}   else console.log('Roll checks');
-if (playerChoice === 'rock' && computerChoice === 'scissors') {
-    playerScore++
-     console.log('You win, Rock beats Scissors!');
-}   else {
-    computerScore++
-     console.log('Computer Wins, Paper beats Rock!');}
-     
-if (playerChoice === 'scissors' &&  computerChoice === 'paper') {
-    playerScore++
-     console.log('You win, Scissors beat Paper!');
-}   else {
-    computerScore++
-     console.log('Computer Wins, Rock beats Scissors!');}
-    
-if (playerChoice === 'paper' && computerChoice === 'rock') {
-    playerScore++
-     console.log('You win, Paper beats Rock');
-}   else {
-    computerScore++ 
-     console.log('Computer Wins, Scissors beat paper');}
-     
+//comparison function to check playerChoice against computerChoice and return strings based on findings
+function theBattle() {
+    computerPick()
+    if (playerChoice === computerChoice) {
+        return console.log('Tie!')
+        }else console.log('Check Rolls');
+
+            if (playerChoice == 'rock' && computerChoice == 'scissors') {
+                playerScore++
+                return console.log('Rock beats Scissors');
+            }else if (playerChoice == 'scissors' && computerChoice == 'paper') {
+                playerScore++
+                return console.log('Scissor beats Paper');
+            }else if (playerChoice == 'paper' && computerChoice == 'rock') {
+                playerScore++
+               return console.log('Paper beats rock');}
+            else console.log('Computer wins')
+    }
