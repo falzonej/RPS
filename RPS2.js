@@ -1,8 +1,10 @@
+//stores player and computer scores
+let computerScore = 0;
+let playerScore = 0;
+
 function playRound() {
 
-    //stores player and computer scores
-    let computerScore = 0;
-    let playerScore = 0;
+
 
     //computer's options, random number selector, and stored choice for comparison 
     let computerOptions = ['rock', 'paper', 'scissors'];
@@ -23,28 +25,31 @@ function playRound() {
     }
 
     //comparison function to check playerChoice against computerChoice and return strings based on findings
-    function theBattle() {
+    function theBattle() {  
+
         if (playerChoice === computerChoice) {
             return console.log('Tie!')
             }else {
                 console.log(playerChoice) 
                 console.log(computerChoice)
             if (playerChoice == 'rock' && computerChoice == 'scissors') {
-                    playerScore++
-                    return console.log('Rock beats Scissors');
+                    let playerWinnerRock = 'Rock beats Scissors'
+                    playerScore++;
+                    return console.log(playerWinnerRock);
                 }else if (playerChoice == 'scissors' && computerChoice == 'paper') {
-                    playerScore++
-                    return console.log('Scissor beats Paper');
+                    let playerWinnerScissors = 'Scissors beats Paper!'
+                    playerScore++;
+                    return console.log(playerWinnerScissors);
                 }else if (playerChoice == 'paper' && computerChoice == 'rock') {
-                    playerScore++
-                    return console.log('Paper beats rock');}
-            else 
-                computerScore++
-                return console.log('Computer wins');
+                    let playerWinnerPaper = 'Paper beats Rock!'
+                    playerScore++;
+                    return console.log(playerWinnerPaper);}
+            else {
+                let cpuWinner = "Computer Wins" 
+                computerScore++;
+                return console.log(cpuWinner);}
             };
         }
 
-console.log(playerScore)
-console.log(computerScore)
-return console.log(theBattle());    
+return console.log(theBattle());
 }
