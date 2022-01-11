@@ -2,9 +2,17 @@
 let computerScore = 0;
 let playerScore = 0;
 
+//full game 
+function playGame() {
+    while (playerScore || computerScore < 4) 
+    if (playerScore > 4)
+        return console.log(playerScore)("Weiner winner");
+    else if (computerScore > 4){
+        return console.log(computerScore), ('Skynet went Live...');}
+    else{ playRound(); }
+}
+//singular round run and comparison functions
 function playRound() {
-
-
 
     //computer's options, random number selector, and stored choice for comparison 
     let computerOptions = ['rock', 'paper', 'scissors'];
