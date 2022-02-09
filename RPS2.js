@@ -4,13 +4,14 @@ let playerScore = 0;
 
 //runs full 5 round game and returns the winner 
 function playGame() {
-    while (playerScore || computerScore < 4) 
+    while (playerScore < 4 && computerScore < 4) 
     if (playerScore > 4)
-        return console.log(playerScore)("Weiner winner");
+        return console.log(playerScore), ("Weiner winner");
     else if (computerScore > 4){
         return console.log(computerScore), ('Skynet went Live...');}
     else{ playRound(); }
-}
+
+}   
 //singular round run and comparison functions
 function playRound() {
 
