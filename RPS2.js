@@ -1,61 +1,75 @@
-//stores player and computer scores
 let computerScore = 0;
 let playerScore = 0;
 
-//runs full 5 round game and returns the winner 
-function playGame() {
-    while (playerScore < 4 && computerScore < 4) 
-    if (playerScore > 4)
-        return console.log(playerScore), ("Weiner winner");
-    else if (computerScore > 4){
-        return console.log(computerScore), ('Skynet went Live...');}
-    else{ playRound(); }
+roundOutcome = document.querySelector('#roundOutcome')
+playerScorePage = document.querySelector('#playerScorePage');
+computerScorePage = document.querySelector('#computerScorePage');
+playerChoicePage = document.querySelector('#playerChoicePage');
+computerChoicePage = document.querySelector('#computerChoicePage');
 
-}   
-//singular round run and comparison functions
-function playRound() {
 
-    //computer's options, random number selector, and stored choice for comparison 
-    let computerOptions = ['rock', 'paper', 'scissors'];
-    let computerChoice = computerPick();
-    function computerNumber() {
-        let result = Math.floor(Math.random()*3)
-        return result;
-    }
-    function computerPick() {
-        let result = computerOptions[computerNumber()]
-        return result;
-    }
-    // user choice and lowercasing to allow comparison
-    let playerChoice = playerChoiceOriginal().toLowerCase();
-    function playerChoiceOriginal() {
-        let result = window.prompt('Chose your weapon: Rock, Paper, Scissors')
-        return result;
-    }
+rock = document.querySelector('#rock');
+paper = document.querySelector('#paper');
+scissors = document.querySelector('#scissors');
+buttons = document.querySelectorAll('.btn');
 
-    //comparison function to check playerChoice against computerChoice and return strings based on findings
-    function theBattle() {  
-        if (playerChoice === computerChoice) {
-            return console.log('Tie!'), console.log(playerChoice), console.log(computerChoice)
-            }else {
-                if (playerChoice == 'rock' && computerChoice == 'scissors') {
-                        let playerWinnerRock = 'Rock beats Scissors!'
-                        playerScore++;
-                        return console.log(playerWinnerRock);
-                    }else if (playerChoice == 'scissors' && computerChoice == 'paper') {
-                        let playerWinnerScissors = 'Scissors beats Paper!'
-                        playerScore++;
-                        return console.log(playerWinnerScissors);
-                    }else if (playerChoice == 'paper' && computerChoice == 'rock') {
-                        let playerWinnerPaper = 'Paper beats Rock!'
-                        playerScore++;
-                        return console.log(playerWinnerPaper);}
-                else {
-                    let computerWinner = "Computer Wins!" 
-                    computerScore++;
-                    return console.log(computerWinner);}
-                }
-            }
-
-return console.log(theBattle());
+//container and func for the computerChoice
+let computerChoice = (computerOptions) => {
+    computerOptions = ['rock', 'paper', 'scissors'];
+    randomNumber = Math.floor(Math.random()*3);
+    result = computerOptions[randomNumber];
+    return result;
 }
+
+rock.addEventListener('click', () => {
+    playRound('rock', computerChoice());
+} );
+paper.addEventListener('click', () => {
+    playRound('paper', computerChoice());
+} );
+scissors.addEventListener('click', () => {
+    playRound('scissors', computerChoice());
+
+} );
+
+
+//singular round run and comparison functions
+function playRound(playerInput, computerChoice) {    
+    rpsComparison(playerInput, computerChoice)
+    playerScorePage.textContent = `Player score is: ` + playerScore;
+    computerScorePage.textContent = `Computer Score is: ` + computerScore;
+    playerChoicePage.textContent = `The Player chose: ${playerInput}`;
+    computerChoicePage.textContent = `The Computer Chose: ${computerChoice}`;
+}
+
+//comparison function to check playerInput against computerChoice and return strings based on findings
+function rpsComparison(playerInput, computerChoice) {
+    const playerWinnerRock = 'Rock beats Scissors!';
+    const playerWinnerScissors = 'Scissors beats Paper!';
+    const playerWinnerPaper = 'Paper beats Rock!';
+    const computerWinner = 'Computer Wins!';
+    if (playerInput === computerChoice) {
+        roundOutcome.textContent = 'Tie!'
+        return 
+            }else {
+            if (playerInput == 'rock' && computerChoice == 'scissors') {
+                    playerScore++;
+                    roundOutcome.textContent = playerWinnerRock;
+                    return;
+                }else if (playerInput == 'scissors' && computerChoice == 'paper') {
+                    playerScore++;
+                    roundOutcome.textContent = playerWinnerScissors;
+                    return;
+                }else if (playerInput == 'paper' && computerChoice == 'rock') {
+                    playerScore++;
+                    roundOutcome.textContent = playerWinnerPaper;
+                    return;}
+            else {
+                computerScore++;
+                roundOutcome.textContent = computerWinner
+                return;}
+            }
+            
+}
+
+
